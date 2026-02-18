@@ -56,6 +56,8 @@ var dur time.Duration
 func meanSpeed(steps int, height float64, duration time.Duration) float64 {
 	// TODO: реализовать функцию
 	if duration <= 0 {
+		err := errors.New("Продолжительность меньше или равна 0")
+		log.Println(err)
 		return 0
 	}
 
@@ -85,11 +87,11 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 		err = fmt.Errorf("неизвестный тип тренировки")
 	}
 
-	if dur <= 0 {
-		//err = fmt.Errorf("Продолжительность меньше или равна 0")
-		err := errors.New("Продолжительность меньше или равна 0")
-		log.Println(err)
-	}
+	//if dur <= 0 {
+	//err = fmt.Errorf("Продолжительность меньше или равна 0")
+	//err := errors.New("Продолжительность меньше или равна 0")
+	//log.Println(err)
+	//}
 
 	switch typeOfAct {
 	case "Ходьба":
