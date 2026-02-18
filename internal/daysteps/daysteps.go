@@ -55,7 +55,7 @@ func DayActionInfo(data string, weight, height float64) string {
 
 	cals, err := spentcalories.WalkingSpentCalories(steps, weight, height, t)
 
-	s := "Количество шагов: " + strconv.Itoa(steps) + ".\nДистанция составила " + strconv.FormatFloat(distKm, 'f', 2, 64) + " км.\nВы сожгли " + strconv.FormatFloat(cals, 'f', 2, 64) + " ккал."
+	s := "Количество шагов: " + strconv.Itoa(steps) + ".\nДистанция составила " + strconv.FormatFloat(distKm, 'f', 2, 64) + " км.\nВы сожгли " + strconv.FormatFloat(cals, 'f', 2, 64) + " ккал.\n"
 
 	return s
 }
