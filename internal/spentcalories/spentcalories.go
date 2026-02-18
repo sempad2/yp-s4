@@ -92,6 +92,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 		//err = fmt.Errorf("неизвестный тип тренировки")
 		err := errors.New("неизвестный тип тренировки")
 		log.Println(err)
+		return "", err
 	}
 
 	//if dur <= 0 {
