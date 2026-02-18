@@ -1,7 +1,9 @@
 package daysteps
 
 import (
+	"errors"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"time"
@@ -20,7 +22,10 @@ func parsePackage(data string) (int, time.Duration, error) {
 	// TODO: реализовать функцию
 	s := strings.Split(data, ",")
 	if len(s) != 2 {
-		return 0, 0, fmt.Errorf("Неверные входные данные, строка должна делиться на две состатвные части с разделителем \",\"")
+		//err := fmt.Errorf("Неверные входные данные, строка должна делиться на две состатвные части с разделителем \",\"")
+		err := errors.New("Неверные входные данные, строка должна делиться на две состатвные части с разделителем \",\"")
+		log.Println(err)
+		return 0, 0, err
 	}
 
 	steps, err := strconv.Atoi(s[0])
