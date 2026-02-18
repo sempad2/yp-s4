@@ -118,7 +118,10 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// TODO: реализовать функцию
 	if steps <= 0 || weight <= 0 || height <= 0 || duration <= 0 {
-		return 0, fmt.Errorf("Одно или несколько входящих значений меньше или равно 0")
+		//return 0, fmt.Errorf("Одно или несколько входящих значений меньше или равно 0")
+		err := errors.New("Продолжительность меньше или равна 0")
+		log.Println(err)
+		return 0, err
 	}
 
 	averageV := meanSpeed(steps, height, duration)
@@ -132,7 +135,8 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 	// TODO: реализовать функцию
 	cals, err := RunningSpentCalories(steps, weight, height, duration)
 	if err != nil {
-		return 0, fmt.Errorf("Одно или несколько входящих значений меньше или равно 0")
+		//return 0, fmt.Errorf("Одно или несколько входящих значений меньше или равно 0")
+		return 0, err
 	}
 
 	return cals * walkingCaloriesCoefficient, nil
