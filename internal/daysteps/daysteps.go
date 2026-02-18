@@ -48,6 +48,11 @@ func parsePackage(data string) (int, time.Duration, error) {
 		log.Println(err)
 		return 0, 0, err
 	}
+	if t <= 0 {
+		err := errors.New("Продолжительность меньше или равна 0")
+		log.Println(err)
+		return 0, 0, err
+	}
 
 	return steps, t, nil
 }
