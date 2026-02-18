@@ -30,15 +30,23 @@ func parsePackage(data string) (int, time.Duration, error) {
 
 	steps, err := strconv.Atoi(s[0])
 	if err != nil {
-		return 0, 0, fmt.Errorf("Ошибка преобразования в число количества шагов")
+		//return 0, 0, fmt.Errorf("Ошибка преобразования в число количества шагов")
+		err := errors.New("Ошибка преобразования в число количества шагов")
+		log.Println(err)
+		return 0, 0, err
 	}
 	if steps <= 0 {
-		return 0, 0, fmt.Errorf("Количество шагов менее или равно 0")
+		err := errors.New("Количество шагов менее или равно 0")
+		log.Println(err)
+		return 0, 0, err
 	}
 
 	t, err := time.ParseDuration(s[1])
 	if err != nil {
-		return 0, 0, fmt.Errorf("Ошибка преобразования времени")
+		//return 0, 0, fmt.Errorf("Ошибка преобразования времени")
+		err := errors.New("Ошибка преобразования времени")
+		log.Println(err)
+		return 0, 0, err
 	}
 
 	return steps, t, nil
