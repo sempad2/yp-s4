@@ -1,6 +1,7 @@
 package spentcalories
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"strconv"
@@ -10,7 +11,7 @@ import (
 
 // Основные константы, необходимые для расчетов.
 const (
-	lenStep                    = 0.65 // средняя длина шага.
+	//lenStep                    = 0.65 // средняя длина шага.
 	mInKm                      = 1000 // количество метров в километре.
 	minInH                     = 60   // количество минут в часе.
 	stepLengthCoefficient      = 0.45 // коэффициент для расчета длины шага на основе роста.
@@ -81,7 +82,13 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 	}
 
 	if typeOfAct != "Бег" && typeOfAct != "Ходьба" {
-		fmt.Errorf("неизвестный тип тренировки")
+		err = fmt.Errorf("неизвестный тип тренировки")
+	}
+
+	if dur <= 0 {
+		//err = fmt.Errorf("Продолжительность меньше или равна 0")
+		err := errors.New("Продолжительность меньше или равна 0")
+		log.Println(err)
 	}
 
 	switch typeOfAct {
