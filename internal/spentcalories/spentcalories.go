@@ -84,7 +84,9 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 	}
 
 	if typeOfAct != "Бег" && typeOfAct != "Ходьба" {
-		err = fmt.Errorf("неизвестный тип тренировки")
+		//err = fmt.Errorf("неизвестный тип тренировки")
+		err := errors.New("неизвестный тип тренировки")
+		log.Println(err)
 	}
 
 	//if dur <= 0 {
@@ -110,7 +112,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 		}
 	}
 
-	s := "Тип тренировки: " + typeOfAct + "\nДлительность: " + strconv.FormatFloat(dur.Hours(), 'f', 2, 64) + " ч.\nДистанция: " + strconv.FormatFloat(dist, 'f', 2, 64) + " км.\nСкорость: " + strconv.FormatFloat(averageV, 'f', 2, 64) + " км/ч\nСожгли калорий: " + strconv.FormatFloat(cals, 'f', 2, 64)
+	s := "Тип тренировки: " + typeOfAct + "\nДлительность: " + strconv.FormatFloat(dur.Hours(), 'f', 2, 64) + " ч.\nДистанция: " + strconv.FormatFloat(dist, 'f', 2, 64) + " км.\nСкорость: " + strconv.FormatFloat(averageV, 'f', 2, 64) + " км/ч\nСожгли калорий: " + strconv.FormatFloat(cals, 'f', 2, 64) + "\n"
 
 	return s, nil
 }
@@ -119,7 +121,7 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 	// TODO: реализовать функцию
 	if steps <= 0 || weight <= 0 || height <= 0 || duration <= 0 {
 		//return 0, fmt.Errorf("Одно или несколько входящих значений меньше или равно 0")
-		err := errors.New("Продолжительность меньше или равна 0")
+		err := errors.New("Одно или несколько входящих значений меньше или равно 0")
 		log.Println(err)
 		return 0, err
 	}
