@@ -39,6 +39,11 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 	if err != nil {
 		return 0, "", 0, fmt.Errorf("Ошибка преобразования времени")
 	}
+	if t <= 0 {
+		err := errors.New("Продолжительность меньше или равна 0")
+		log.Println(err)
+		return 0, "", 0, err
+	}
 
 	return steps, typeOfAct, t, nil
 }
