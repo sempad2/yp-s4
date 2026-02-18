@@ -60,7 +60,7 @@ func DayActionInfo(data string, weight, height float64) string {
 		return ""
 	}
 
-	if steps <= 0 {
+	if steps <= 0 || t <= 0 {
 		return ""
 	}
 
