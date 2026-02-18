@@ -2,10 +2,11 @@ package daysteps
 
 import (
 	"fmt"
-	"spentcalories"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/Yandex-Practicum/tracker/internal/spentcalories"
 )
 
 const (
@@ -52,7 +53,7 @@ func DayActionInfo(data string, weight, height float64) string {
 
 	distKm := float64(steps) * stepLength / float64(mInKm)
 
-	cals := spentcalories.WalkingSpentCalories(steps, weight, height, t)
+	cals, err := spentcalories.WalkingSpentCalories(steps, weight, height, t)
 
 	s := "Количество шагов: " + strconv.Itoa(steps) + ".\nДистанция составила " + strconv.FormatFloat(distKm, 'f', 2, 64) + "км.\nВы сожгли " + strconv.FormatFloat(cals, 'f', 2, 64) + "ккал."
 
